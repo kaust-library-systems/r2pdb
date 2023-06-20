@@ -4,4 +4,24 @@ Creating a simple [SQLite3](https://www.sqlite.org/index.html) database to store
 
 ## Creating the database
 
-The three SQL scripts can be executed directly from sqlite3 prompt to create the tables.
+The three SQL scripts can be executed directly from sqlite3 prompt to create the tables. Below is a simple diagram of how the tables are related.
+
+```mermaid
+erDiagram
+    items ||--|{ ingested : ingest
+    items {
+        int id
+        string item
+    }
+    ingested {
+        int id
+        string dt_ingest
+        string id_item
+    }
+    items ||--|{ verified: verify
+    verified {
+        int id
+        string dt_verify
+        string id_item
+    }
+```
