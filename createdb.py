@@ -24,7 +24,7 @@ def main():
     cur = con.cursor()
 
     for tt in sql_tables:
-        print(f"Creating table '{tt}'", end='... ')
+        print(f"Creating table from '{tt}'", end='... ')
         command = read_sql(tt)
         cur.execute(command)
         print('done')
