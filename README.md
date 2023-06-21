@@ -5,6 +5,9 @@ Creating a simple [SQLite3](https://www.sqlite.org/index.html) database to store
 Below is a simple [ER diagram](https://mermaid.js.org/syntax/entityRelationshipDiagram.html) of how the tables are related.
 
 ```mermaid
+--- 
+title: Ingestion and Verification Diagram
+---
 erDiagram
     items ||--|{ ingested : ingest
     items {
