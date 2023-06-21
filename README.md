@@ -53,3 +53,7 @@ Mode                 LastWriteTime         Length Name
 PS C:\Users\garcm0b\Work\r2pdb> 
 ```
 
+## Populating the Database
+
+Populating the database with some sample data.
+
