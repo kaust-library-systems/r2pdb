@@ -15,13 +15,12 @@ erDiagram
         string item
     }
     ingested {
-        int id
-        string dt_ingest
         int id_item
+        string dt_ingest
     }
     items ||--|{ verified: verify
     verified {
-        int id
+        int id_item
         string dt_verify
         int id_item
     }
