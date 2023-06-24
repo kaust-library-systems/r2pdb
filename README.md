@@ -22,7 +22,6 @@ erDiagram
     verified {
         int id_item
         string dt_verify
-        int id_item
     }
 ```
 
