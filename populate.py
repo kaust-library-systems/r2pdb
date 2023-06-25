@@ -4,6 +4,17 @@
 
 import sqlite3
 
+def insert_db(items:list, date:str) -> None:
+    """Insert 'items' in the DB."""
+
+    conn = sqlite3.connect('r2p.db')
+    cur = conn.cursor()
+
+    for item in items:
+        sql_line = f"INSERT INTO items VALUES(NULL, {item})"
+        cur.execute(sql_line)
+
+
 def read_sample_file(sample_file):
     """
     Read a file with sample items to test insertion into the db.
@@ -26,8 +37,9 @@ def main():
     # Read sample items file
     ingested_list = read_sample_file(sample_file)
 
-    print(ingested_list)
+    # print(ingested_list)
 
+    insert_db(ingested_list)
     
 
 if __name__ == "__main__":
