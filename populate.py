@@ -12,6 +12,7 @@ def insert_db(items:list, date:str) -> None:
 
     for item in items:
         sql_line = f"INSERT INTO items VALUES(NULL, '{item})'"
+        print(f"SQL: {sql_line}")
         cur.execute(sql_line)
 
 
