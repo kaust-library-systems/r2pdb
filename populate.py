@@ -6,7 +6,9 @@ import sqlite3
 
 
 def insert_db(items: list, date: str) -> None:
-    """Insert 'items' in the DB."""
+    """
+    Insert 'items' in the DB.
+    """
 
     conn = sqlite3.connect("r2p.db")
     cur = conn.cursor()
