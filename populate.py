@@ -11,10 +11,12 @@ def insert_db(items:list, date:str) -> None:
     cur = conn.cursor()
 
     for item in items:
-        sql_line = f"INSERT INTO items VALUES(NULL, '{item})'"
+        sql_line = f"INSERT INTO items VALUES(NULL, '{item}')"
         print(f"SQL: {sql_line}")
         cur.execute(sql_line)
 
+    conn.commit()
+    print(f"Total changes: '{conn.total_changes}'")
 
 def read_sample_file(sample_file):
     """
