@@ -39,7 +39,7 @@ def main():
 
     # print(ingested_list)
 
-    insert_db(ingested_list)
+    insert_db(ingested_list, ingest_date)
     
 
 if __name__ == "__main__":
