@@ -14,9 +14,13 @@ def insert_db(items: list, date: str) -> None:
     cur = conn.cursor()
 
     for item in items:
-        sql_line = f"INSERT INTO items VALUES(NULL, '{item}')"
-        print(f"SQL: {sql_line}")
-        cur.execute(sql_line)
+        cur.execute("INSERT INTO items VALUES(NULL, ?)", (item,))
+
+        params = {"dt_ingest": date, "item": item}
+        cur.execute(
+            "INSERT INTO ingested (id_item, dt_ingest) SELECT id, :dt_ingest FROM items WHERE item = :item",
+            params,
+        )
 
     conn.commit()
     print(f"Total changes: '{conn.total_changes}'")
