@@ -14,11 +14,16 @@ def insert_db(items: list, date: str) -> None:
     cur = conn.cursor()
 
     for item in items:
-        cur.execute("INSERT INTO items VALUES(NULL, ?)", (item,))
+        res = cur.execute('SELECT * FROM items WHERE item=?', (item,)).fetchall()
+        if not len(res):
+            print(f"New item '{item}'")
+            cur.execute("INSERT INTO items VALUES(NULL, ?)", (item,))
+        else:
+            print(f"Duplicated item '{item}'")
 
         params = {"dt_ingest": date, "item": item}
         cur.execute(
-            "INSERT INTO ingested (id_item, dt_ingest) SELECT id, :dt_ingest FROM items WHERE item = :item",
+            "INSERT INTO ingested (id, id_item, dt_ingest) SELECT NULL, id, :dt_ingest FROM items WHERE item = :item",
             params,
         )
 
@@ -44,11 +49,12 @@ def main():
 
     # Define some date in the past to test ingesting the item again
     # in a date in the future.
-    ingest_date = "2023-06-10"
+    ingest_date = "2023-06-17"
 
     # Read sample items file
     ingested_list = read_sample_file(sample_file)
 
+    # ingested_list = ingested_list[:4]
     # print(ingested_list)
 
     insert_db(ingested_list, ingest_date)
