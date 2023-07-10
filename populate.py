@@ -14,7 +14,7 @@ def insert_db(items: list, date: str) -> None:
     cur = conn.cursor()
 
     for item in items:
-        res = cur.execute('SELECT * FROM items WHERE item=?', (item,)).fetchall()
+        res = cur.execute("SELECT * FROM items WHERE item=?", (item,)).fetchall()
         if not len(res):
             print(f"New item '{item}'")
             cur.execute("INSERT INTO items VALUES(NULL, ?)", (item,))
