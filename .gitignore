@@ -1,3 +1,6 @@
+# R2P project:
+r2p.db
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
