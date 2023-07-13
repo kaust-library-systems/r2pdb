@@ -1,5 +1,6 @@
 # R2P project:
 r2p.db
+sample_items_*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
