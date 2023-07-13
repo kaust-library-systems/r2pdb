@@ -3,7 +3,7 @@
 #
 
 import sqlite3
-
+import sys
 
 def insert_db(items: list, date: str) -> None:
     """
@@ -45,11 +45,11 @@ def read_sample_file(sample_file):
 
 
 def main():
-    sample_file = "sample_items.txt"
+    sample_file = sys.argv[1]
 
     # Define some date in the past to test ingesting the item again
     # in a date in the future.
-    ingest_date = "2023-06-17"
+    ingest_date = sys.argv[2]    
 
     # Read sample items file
     ingested_list = read_sample_file(sample_file)
