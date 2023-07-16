@@ -55,7 +55,21 @@ PS C:\Users\garcm0b\Work\r2pdb>
 
 ## Populating the Database
 
-Populating the database with some sample data.
+Populating the database with some sample data and a date
+
+```
+PS C:\Users\garcm0b\Work\r2pdb> python .\populate.py .\sample_items_2.txt "2023-07-13"
+```
+
+The `sample_items*.txt` is a simple file with one item from the repository per line
+
+```
+PS C:\Users\garcm0b\Work\r2pdb> cat .\sample_items.txt  
+10754_136193
+10754_136194
+10754_136195
+10754_136196
+```
 
 ## Verify Items
 
