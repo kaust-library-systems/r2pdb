@@ -5,6 +5,7 @@
 import sqlite3
 import sys
 
+
 def insert_db(items: list, date: str) -> None:
     """
     Insert 'items' in the DB.
@@ -49,7 +50,7 @@ def main():
 
     # Define some date in the past to test ingesting the item again
     # in a date in the future.
-    ingest_date = sys.argv[2]    
+    ingest_date = sys.argv[2]
 
     # Read sample items file
     ingested_list = read_sample_file(sample_file)
