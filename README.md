@@ -18,6 +18,7 @@ erDiagram
         int id
         int id_item
         string dt_ingest
+        bool is_verified
     }
     items ||--|{ verified: verify
     verified {
@@ -26,6 +27,8 @@ erDiagram
         string dt_verify
     }
 ```
+
+The flag `is_verified` is [boolean](https://www.sqlite.org/datatype3.html) but SQLite3 doesn't have this kind of type, instead it's an `integer` that "understands" `TRUE` and `FALSE`.
 
 ## Creating the database
 

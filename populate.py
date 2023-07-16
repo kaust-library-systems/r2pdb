@@ -24,7 +24,7 @@ def insert_db(items: list, date: str) -> None:
 
         params = {"dt_ingest": date, "item": item}
         cur.execute(
-            "INSERT INTO ingested (id, id_item, dt_ingest) SELECT NULL, id, :dt_ingest FROM items WHERE item = :item",
+            "INSERT INTO ingested (id, id_item, dt_ingest, is_verified) SELECT NULL, id, :dt_ingest,0 FROM items WHERE item = :item",
             params,
         )
 
