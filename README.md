@@ -57,3 +57,23 @@ PS C:\Users\garcm0b\Work\r2pdb>
 
 Populating the database with some sample data.
 
+## Verify Items
+
+Whenever an item is ingested, the flag `verified` is set to _false_.
+
+```mermaid
+flowchart LR
+    A[Ingest] -->B[Add Item to Database]
+    B --> C[set verified to false]
+```
+
+The verification step sets the flag to _true_. 
+
+```mermaid
+flowchart LR
+	A[Verify] -->|Query Database| B{Already Verified}
+	B -->|Yes| C[Skip]
+	B -->|No| D[Verify item]
+```
+
+If the item has to be ingested again, the flag `verified` is set to _false_ again until the verification is successful and set the flag to _true_.
