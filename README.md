@@ -71,9 +71,11 @@ The verification step sets the flag to _true_.
 
 ```mermaid
 flowchart LR
-	A[Verify] -->|Query Database| B{Already Verified}
+	A[Verify] -->|Query Ingested| B{Already Verified?}
 	B -->|Yes| C[Skip]
-	B -->|No| D[Verify item]
+	B -->|No| D[Verify item] -->E{Successful?}
+    E -->|Yes| F[Set verified to True]
+    E -->|No| G[Ingest Again]
 ```
 
 If the item has to be ingested again, the flag `verified` is set to _false_ again until the verification is successful and set the flag to _true_.
