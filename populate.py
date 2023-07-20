@@ -32,7 +32,7 @@ def insert_db(items: list, date: str) -> None:
     print(f"Total changes: '{conn.total_changes}'")
 
 
-def read_sample_file(sample_file):
+def read_sample_file(sample_file: str) -> str:
     """
     Read a file with sample items to test insertion into the db.
     """
