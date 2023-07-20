@@ -3,10 +3,11 @@
 #
 
 import sqlite3
+import sys
 from collections import namedtuple
 
 
-def verify_item():
+def verify_item(verify_date:str) -> None:
     """
     Verify the checksum SHA1 of ingested items.
     """
@@ -22,7 +23,7 @@ def verify_item():
     )
 
     for ii in map(ingested_item._make, res):
-        vv = {"id": None, "id_item": ii.id_item, "dt_verified": "2023-07-02"}
+        vv = {"id": None, "id_item": ii.id_item, "dt_verified": verify_date}
         cur.execute(
             "INSERT INTO verified (id, id_item, dt_verify) VALUES(NULL, :id_item, :dt_verified)",
             vv,
@@ -33,8 +34,10 @@ def verify_item():
     print(f"Total changes: '{conn.total_changes}'")
 
 
-def main():
-    verify_item()
+def main() -> None:
+    verify_date = sys.argv[1]
+
+    verify_item(verify_date)
 
 
 if __name__ == "__main__":
